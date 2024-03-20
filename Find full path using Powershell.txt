@@ -1,0 +1,7 @@
+$users = Get-ChildItem -Path 'C:\Users' -Directory -Force -ErrorAction SilentlyContinue
+foreach ($user in $users) {
+    $roamingPath = Join-Path -Path $user.FullName -ChildPath 'AppData\Roaming\zollsoft'
+    if (Test-Path $roamingPath) {
+        Write-Output $roamingPath
+    }
+}
